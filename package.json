@@ -1,6 +1,5 @@
 {
   "name": "angular-cd-timer-dev",
-  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "transpile": "ngc",
