@@ -1,10 +1,13 @@
 {
-  "name": "cd-timer",
+  "name": "angular-cd-timer-dev",
   "description": "Cd-Timer is a Angular CLI component with countup, countdown and multiple options.",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "transpile": "ngc",
+    "minify": "uglifyjs dist/bundles/cd-timer.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/cd-timer.umd.min.js",
+    "package": "rollup -c",
+    "build": "npm run transpile && npm run package && npm run minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true,
@@ -17,8 +20,18 @@
   },
   "homepage": "https://github.com/clemdesign/cd-timer",
   "author": "clemdesign",
+  "dependencies": {
+    "@angular/core": "^4.4.3",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.19"
+  },
   "devDependencies": {
+    "@angular/common": "^4.4.3",
+    "@angular/compiler": "^4.4.3",
+    "@angular/compiler-cli": "^4.4.3",
     "@types/node": "~6.0.60",
-    "typescript": "2.3.4"
+    "rollup": "^0.63.4",
+    "typescript": "2.3.4",
+    "uglify-js": "^3.4.5"
   }
 }

@@ -1,13 +1,24 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
+    "baseUrl": ".",
+    "declaration": true,
+    "stripInternal": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "paths": {
+      "@angular/core": ["node_modules/@angular/core"],
+      "@angular/common": ["node_modules/@angular/common"]
+    },
+    "outDir": "dist",
+    "sourceMap": true,
+    "inlineSources": true,
+    "target": "es5",
+    "skipLibCheck": true,
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -15,5 +26,11 @@
       "es2017",
       "dom"
     ]
+  },
+  "files": [
+    "lib/index.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true
   }
 }
