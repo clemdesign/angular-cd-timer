@@ -1,0 +1,26 @@
+{
+  "name": "angular-cd-timer",
+  "description": "Cd-Timer is a Angular CLI component with countup, countdown and multiple options.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "keywords": [
+    "angular4",
+    "timer",
+    "countdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clemdesign/angular-cd-timer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clemdesign/angular-cd-timer/issues"
+  },
+  "homepage": "https://github.com/clemdesign/angular-cd-timer",
+  "author": "clemdesign",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.5.0"
+  }
+}
