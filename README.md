@@ -11,6 +11,10 @@ This is a simple, re-usable and inter-operable timer component for [Angular CLI]
 
 Demo is available on this site: [http://angular-cd-timer.clemdesign.fr/](http://angular-cd-timer.clemdesign.fr/)
 
+## Prerequisites
+
+- Angular 4 or 5 (Not compatible with 6 and upper)
+
 ## Installation
 
 Execute `npm install angular-cd-timer`
