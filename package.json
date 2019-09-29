@@ -11,17 +11,18 @@
   "private": true,
   "author": "clemdesign",
   "dependencies": {
-    "@angular/core": "^4.4.3",
-    "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "@angular/core": "^8.2.8",
+    "rxjs": "^6.5.3",
+    "zone.js": "^0.9.1"
   },
   "devDependencies": {
-    "@angular/common": "^4.4.3",
-    "@angular/compiler": "^4.4.3",
-    "@angular/compiler-cli": "^4.4.3",
+    "@angular-devkit/build-angular": "^0.12.4",
+    "@angular/common": "^8.2.8",
+    "@angular/compiler": "^8.2.8",
+    "@angular/compiler-cli": "^8.2.8",
     "@types/node": "~6.0.60",
     "rollup": "^0.63.4",
-    "typescript": "2.3.4",
+    "typescript": "3.5.3",
     "uglify-js": "^3.4.5"
   }
 }
