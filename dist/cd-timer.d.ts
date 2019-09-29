@@ -12,7 +12,6 @@ export declare class CdTimerComponent implements AfterViewInit, OnDestroy {
     private renderer;
     private timeoutId;
     private tickCounter;
-    private ngContentNode;
     private ngContentSchema;
     private seconds;
     private minutes;
@@ -59,10 +58,10 @@ export declare class CdTimerComponent implements AfterViewInit, OnDestroy {
         timer: any;
         tick_count: number;
     };
-    private initVar();
-    private resetTimeout();
-    private renderText();
-    private clear();
+    private initVar;
+    private resetTimeout;
+    private renderText;
+    private clear;
     protected calculateTimeUnits(): void;
     protected startTickCount(): void;
 }

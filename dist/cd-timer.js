@@ -1,5 +1,14 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 import { Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
-var CdTimerComponent = (function () {
+var CdTimerComponent = /** @class */ (function () {
     function CdTimerComponent(elt, renderer) {
         this.elt = elt;
         this.renderer = renderer;
@@ -16,8 +25,8 @@ var CdTimerComponent = (function () {
         this.format = 'default';
     }
     CdTimerComponent.prototype.ngAfterViewInit = function () {
-        this.ngContentNode = this.elt.nativeElement.childNodes[1] ? this.elt.nativeElement.childNodes[1] : this.elt.nativeElement.childNodes[0];
-        this.ngContentSchema = this.ngContentNode.nodeValue;
+        var ngContentNode = this.elt.nativeElement.lastChild; // Get last child, defined by user or span
+        this.ngContentSchema = ngContentNode ? ngContentNode.nodeValue : '';
         if (this.autoStart === undefined || this.autoStart === true) {
             this.start();
         }
@@ -136,7 +145,7 @@ var CdTimerComponent = (function () {
             outputText += this.minutes.toString() + 'm ';
             outputText += this.seconds.toString() + 's';
         }
-        this.renderer.setValue(this.ngContentNode, outputText);
+        this.renderer.setProperty(this.elt.nativeElement, 'innerHTML', outputText);
     };
     CdTimerComponent.prototype.clear = function () {
         this.resetTimeout();
@@ -210,30 +219,54 @@ var CdTimerComponent = (function () {
             }
         }, 1000); // Each seconds
     };
+    __decorate([
+        Input(),
+        __metadata("design:type", Number)
+    ], CdTimerComponent.prototype, "startTime", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", Number)
+    ], CdTimerComponent.prototype, "endTime", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", Boolean)
+    ], CdTimerComponent.prototype, "countdown", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", Boolean)
+    ], CdTimerComponent.prototype, "autoStart", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", String)
+    ], CdTimerComponent.prototype, "maxTimeUnit", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", String)
+    ], CdTimerComponent.prototype, "format", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", EventEmitter)
+    ], CdTimerComponent.prototype, "onStart", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", EventEmitter)
+    ], CdTimerComponent.prototype, "onStop", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", EventEmitter)
+    ], CdTimerComponent.prototype, "onTick", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", EventEmitter)
+    ], CdTimerComponent.prototype, "onComplete", void 0);
+    CdTimerComponent = __decorate([
+        Component({
+            selector: 'cd-timer',
+            template: ' <ng-content></ng-content>'
+        }),
+        __metadata("design:paramtypes", [ElementRef, Renderer2])
+    ], CdTimerComponent);
     return CdTimerComponent;
 }());
 export { CdTimerComponent };
-CdTimerComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'cd-timer',
-                template: ' <ng-content></ng-content>'
-            },] },
-];
-/** @nocollapse */
-CdTimerComponent.ctorParameters = function () { return [
-    { type: ElementRef, },
-    { type: Renderer2, },
-]; };
-CdTimerComponent.propDecorators = {
-    'startTime': [{ type: Input },],
-    'endTime': [{ type: Input },],
-    'countdown': [{ type: Input },],
-    'autoStart': [{ type: Input },],
-    'maxTimeUnit': [{ type: Input },],
-    'format': [{ type: Input },],
-    'onStart': [{ type: Output },],
-    'onStop': [{ type: Output },],
-    'onTick': [{ type: Output },],
-    'onComplete': [{ type: Output },],
-};
 //# sourceMappingURL=cd-timer.js.map
