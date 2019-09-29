@@ -13,7 +13,7 @@ Demo is available on this site: [http://angular-cd-timer.clemdesign.fr/](http://
 
 ## Prerequisites
 
-- Angular 4 or 5 (Not compatible with 6 and upper)
+- Angular 4 and upper
 
 ## Installation
 
@@ -84,4 +84,4 @@ Please submit [pull requests](https://github.com/clemdesign/angular-cd-timer/pul
 ## License
 
 Under MIT
-Copyright (c) 2018 clemdesign
+Copyright (c) 2018-2019 clemdesign
