@@ -20,7 +20,6 @@ export interface TimeInterface {
 export class CdTimerComponent implements AfterViewInit, OnDestroy {
   private timeoutId: any;
   private tickCounter: number;
-  private ngContentNode: any;
   private ngContentSchema: string;
 
   private seconds: number;
@@ -55,8 +54,8 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.ngContentNode = this.elt.nativeElement.childNodes[1] ? this.elt.nativeElement.childNodes[1] : this.elt.nativeElement.childNodes[0];
-    this.ngContentSchema = this.ngContentNode.nodeValue;
+    const ngContentNode = this.elt.nativeElement.lastChild;    // Get last child, defined by user or span
+    this.ngContentSchema = ngContentNode ? ngContentNode.nodeValue : '';
     if (this.autoStart === undefined || this.autoStart === true) {
       this.start();
     }
@@ -188,7 +187,7 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
       outputText += this.seconds.toString() + 's';
     }
 
-    this.renderer.setValue(this.ngContentNode, outputText);
+    this.renderer.setProperty(this.elt.nativeElement, 'innerHTML', outputText);
   }
 
   private clear() {
