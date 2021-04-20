@@ -73,6 +73,7 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
   public start() {
     this.initVar();
     this.resetTimeout();
+    this.calculateTimeUnits();
     this.startTickCount();
 
     this.onStart.emit(this);
