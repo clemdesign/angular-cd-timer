@@ -1,5 +1,3 @@
-// TODO: Add readme.md to /dist package
-// TODO: Remove dist/lib from NPM for the next release
 
 import {
   AfterViewInit,

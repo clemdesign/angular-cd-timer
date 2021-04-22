@@ -4,7 +4,16 @@
     (factory((global.cd = global.cd || {}, global.cd.timer = {}),global.ng.core,global.ng.common));
 }(this, (function (exports,core,common) { 'use strict';
 
-    var CdTimerComponent = (function () {
+    var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var CdTimerComponent = /** @class */ (function () {
         function CdTimerComponent(elt, renderer) {
             this.elt = elt;
             this.renderer = renderer;
@@ -21,8 +30,8 @@
             this.format = 'default';
         }
         CdTimerComponent.prototype.ngAfterViewInit = function () {
-            this.ngContentNode = this.elt.nativeElement.childNodes[1] ? this.elt.nativeElement.childNodes[1] : this.elt.nativeElement.childNodes[0];
-            this.ngContentSchema = this.ngContentNode.nodeValue;
+            var ngContentNode = this.elt.nativeElement.lastChild; // Get last child, defined by user or span
+            this.ngContentSchema = ngContentNode ? ngContentNode.nodeValue : '';
             if (this.autoStart === undefined || this.autoStart === true) {
                 this.start();
             }
@@ -141,7 +150,7 @@
                 outputText += this.minutes.toString() + 'm ';
                 outputText += this.seconds.toString() + 's';
             }
-            this.renderer.setValue(this.ngContentNode, outputText);
+            this.renderer.setProperty(this.elt.nativeElement, 'innerHTML', outputText);
         };
         CdTimerComponent.prototype.clear = function () {
             this.resetTimeout();
@@ -215,52 +224,80 @@
                 }
             }, 1000); // Each seconds
         };
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], CdTimerComponent.prototype, "startTime", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Number)
+        ], CdTimerComponent.prototype, "endTime", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], CdTimerComponent.prototype, "countdown", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", Boolean)
+        ], CdTimerComponent.prototype, "autoStart", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], CdTimerComponent.prototype, "maxTimeUnit", void 0);
+        __decorate([
+            core.Input(),
+            __metadata("design:type", String)
+        ], CdTimerComponent.prototype, "format", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", core.EventEmitter)
+        ], CdTimerComponent.prototype, "onStart", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", core.EventEmitter)
+        ], CdTimerComponent.prototype, "onStop", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", core.EventEmitter)
+        ], CdTimerComponent.prototype, "onTick", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", core.EventEmitter)
+        ], CdTimerComponent.prototype, "onComplete", void 0);
+        CdTimerComponent = __decorate([
+            core.Component({
+                selector: 'cd-timer',
+                template: ' <ng-content></ng-content>'
+            }),
+            __metadata("design:paramtypes", [core.ElementRef, core.Renderer2])
+        ], CdTimerComponent);
         return CdTimerComponent;
     }());
-    CdTimerComponent.decorators = [
-        { type: core.Component, args: [{
-                    selector: 'cd-timer',
-                    template: ' <ng-content></ng-content>'
-                },] },
-    ];
-    /** @nocollapse */
-    CdTimerComponent.ctorParameters = function () { return [
-        { type: core.ElementRef, },
-        { type: core.Renderer2, },
-    ]; };
-    CdTimerComponent.propDecorators = {
-        'startTime': [{ type: core.Input },],
-        'endTime': [{ type: core.Input },],
-        'countdown': [{ type: core.Input },],
-        'autoStart': [{ type: core.Input },],
-        'maxTimeUnit': [{ type: core.Input },],
-        'format': [{ type: core.Input },],
-        'onStart': [{ type: core.Output },],
-        'onStop': [{ type: core.Output },],
-        'onTick': [{ type: core.Output },],
-        'onComplete': [{ type: core.Output },],
-    };
 
-    var CdTimerModule = (function () {
+    var __decorate$1 = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var CdTimerModule = /** @class */ (function () {
         function CdTimerModule() {
         }
+        CdTimerModule = __decorate$1([
+            core.NgModule({
+                imports: [
+                    common.CommonModule
+                ],
+                declarations: [
+                    CdTimerComponent
+                ],
+                exports: [
+                    CdTimerComponent
+                ]
+            })
+        ], CdTimerModule);
         return CdTimerModule;
     }());
-    CdTimerModule.decorators = [
-        { type: core.NgModule, args: [{
-                    imports: [
-                        common.CommonModule
-                    ],
-                    declarations: [
-                        CdTimerComponent
-                    ],
-                    exports: [
-                        CdTimerComponent
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    CdTimerModule.ctorParameters = function () { return []; };
 
     exports.CdTimerModule = CdTimerModule;
     exports.CdTimerComponent = CdTimerComponent;
