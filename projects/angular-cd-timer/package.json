@@ -18,6 +18,9 @@
     "url": "https://github.com/clemdesign/angular-cd-timer/issues"
   },
   "homepage": "https://github.com/clemdesign/angular-cd-timer",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "author": "clemdesign",
   "peerDependencies": {
     "@angular/core": ">= 4.0.0",
