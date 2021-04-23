@@ -1,1 +1,0 @@
-{"version":3,"sources":["../lib/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,aAAa,EAAC,MAAM,mBAAmB,CAAC;AAChD,OAAO,EAAC,gBAAgB,EAAgB,MAAM,YAAY,CAAC","file":"index.js","sourceRoot":"","sourcesContent":["export {CdTimerModule} from './cd-timer.module';\r\nexport {CdTimerComponent, TimeInterface} from './cd-timer';\r\n"]}

@@ -1,0 +1,106 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Cd-Timer !
+  </h1>
+  <img width="100" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<section>
+  <h1>Introduction</h1>
+  <p><code>cd-timer</code> is a <a href="https://angular.io/" target="_blank">Angular CLI</a> component that display timer count with different options. </p>
+  <p><code>cd-timer</code> is able to:</p>
+  <ul>
+    <li>count up / count down.</li>
+    <li>manage start time and end time.</li>
+    <li>manage several displaying format.</li>
+  </ul>
+</section>
+<section>
+  <h1>Basic Exemple</h1>
+  <p>This simple integration <code>&lt;cd-timer&gt;&lt;/cd-timer&gt;</code> will start the timer with the default option of ticking every 1 second:</p>
+  <p><cd-timer #basicTimer class="bootstrap-timer"></cd-timer></p>
+  <p>By binding timer with <code>@ViewChild('basicTimer')</code> and markup <code>&lt;cd-timer #basicTimer&gt;&lt;/cd-timer&gt;</code>, you can control the timer:</p>
+  <p>
+    <button type="button" (click)="doActionBasicTimer('start')">Start</button>
+    <button type="button" (click)="doActionBasicTimer('stop')">Stop</button>
+    <button type="button" (click)="doActionBasicTimer('resume')">Resume</button>
+    <button type="button" (click)="doActionBasicTimer('reset')">Reset</button>
+  </p>
+</section>
+<section>
+  <h1>Timer with Start Time and End Time</h1>
+  <p>This markup <code>&lt;cd-timer [startTime]="10" [endTime]="20"&gt;&lt;/cd-timer&gt;</code> will define a start time (in seconds) and end time (in seconds):</p>
+  <p><cd-timer class="bootstrap-timer" [startTime]="10" [endTime]="20"></cd-timer></p>
+</section>
+<section>
+  <h1>Formatting Timer</h1>
+  <p>The directive <code>format</code> allow to format timer displaying according predefined style:</p>
+
+  <h2>Default format:</h2>
+  <p>This markup <code>&lt;cd-timer format="default"&gt;&lt;/cd-timer&gt;</code> will display : </p>
+  <p><cd-timer class="bootstrap-timer" format="default"></cd-timer></p>
+
+  <h2>HMS format:</h2>
+  <p>This markup <code>&lt;cd-timer format="hms"&gt;&lt;/cd-timer&gt;</code> will display : </p>
+  <p><cd-timer class="bootstrap-timer" format="hms"></cd-timer></p>
+
+  <h2>Intelli format:</h2>
+  <p>This markup <code>&lt;cd-timer format="intelli"&gt;&lt;/cd-timer&gt;</code> will display : </p>
+  <p><cd-timer class="bootstrap-timer" format="intelli"></cd-timer></p>
+  <p>Intelli format define automatically a condensed format:</p>
+  <ul>
+    <li>only seconds displaying: 25s</li>
+    <li>minutes and seconds displaying: 02min 12s</li>
+    <li>hours and minutes displaying: 10h 21min</li>
+    <li>days and hours displaying: 2days 12min</li>
+  </ul>
+
+  <h2>User format:</h2>
+  <p>This markup <code>&lt;cd-timer format="user"&gt;[hours] hours [minutes] minutes [seconds] seconds&lt;/cd-timer&gt;</code> will display : </p>
+  <p><cd-timer class="bootstrap-timer" format="user">[hours] hours [minutes] minutes [seconds] seconds</cd-timer></p>
+  <p>You have possibility to build a custom Time display with the following markup:</p>
+  <ul>
+    <li>[seconds]: display seconds</li>
+    <li>[minutes]: display minutes</li>
+    <li>[hours]: display hours</li>
+    <li>[days]: display days</li>
+  </ul>
+
+</section>
+<section>
+  <h1>Countdown Timer</h1>
+  <p><code>cd-timer</code> allow to configure countdown with this markup <code>&lt;cd-timer countdown="true" [startTime]="100"&gt;&lt;/cd-timer&gt;</code> </p>
+  <p><cd-timer class="bootstrap-timer" format="intelli" [startTime]="65" [countdown]="true"></cd-timer></p>
+</section>
+<section>
+  <h1>Callbacks</h1>
+  <p>There are 4 possible callbacks configuration for <code>cd-timer</code>:</p>
+  <ul>
+    <li>(onComplete): Called when tick count reach endTime or 0</li>
+    <li>(onTick): Called each tick count</li>
+    <li>(onStart): Called when timer starts</li>
+    <li>(onStop): Called when timer stop</li>
+  </ul>
+  <p>
+    <cd-timer
+      class="bootstrap-timer"
+      format="hms"
+      [startTime]="10"
+      [endTime]="20"
+      (onComplete)="onComplete($event)"
+      (onTick)="onTick($event)"
+      (onStart)="onStart($event)"
+    ></cd-timer> <span>{{timerInfo}}</span>
+  </p>
+</section>
+<section>
+  <h1>Contribution</h1>
+  <p>We welcome any or all kinds of contributions!
+    Please submit <a href="https://github.com/clemdesign/angular-cd-timer/pulls" target="_blank">pull requests</a>
+    or <a href="https://github.com/clemdesign/angular-cd-timer/issues" target="_blank">create issues</a> to contribute to this project :)</p>
+</section>
+<section>
+  <h1>License</h1>
+  <p>Copyright (c) 2018 clemdesign</p>
+</section>
+

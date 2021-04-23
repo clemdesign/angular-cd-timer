@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, Tahoma, Verdana;
+  font-size: 16px;
+  padding: 3rem;
+  line-height: 24px;
+}
+
+code {
+  padding: 2px 4px;
+  color: #d14;
+  white-space: nowrap;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 3rem 0 1.5rem 0;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin: 2rem 0 1.2rem 0;
+  color: #303030;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
