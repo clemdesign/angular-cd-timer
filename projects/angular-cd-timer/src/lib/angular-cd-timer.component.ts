@@ -110,7 +110,6 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Initialize variable before start
-   * @private
    */
   private initVar() {
     this.startTime = this.startTime || 0;
@@ -131,7 +130,6 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Reset timeout
-   * @private
    */
   private resetTimeout() {
     if (this.timeoutId) {
@@ -141,7 +139,6 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
 
   /**
    * Render the time to DOM
-   * @private
    */
   private renderText() {
     let outputText;
