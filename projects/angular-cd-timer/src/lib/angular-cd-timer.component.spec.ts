@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CdTimerComponent } from './angular-cd-timer.component';
 
@@ -6,7 +6,7 @@ describe('AngularCdTimerComponent', () => {
   let component: CdTimerComponent;
   let fixture: ComponentFixture<CdTimerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CdTimerComponent ]
     })
