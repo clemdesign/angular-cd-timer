@@ -23,6 +23,24 @@ Execute `npm install angular-cd-timer`
 
 `cd-timer` count every seconds.
 
+### Configuration
+
+Import the module as standard [Angular module import](https://angular.io/guide/architecture-modules):
+
+```typescript
+import { CdTimerModule } from 'angular-cd-timer';
+
+@NgModule({
+  // ...,
+  imports: [
+    // ...,
+    CdTimerModule
+  ],
+  // ...
+})
+export class AppModule { }
+```
+
 ### Basic usage
 
 This simple integration `<cd-timer></cd-timer>` will start the timer with the default options of ticking every 1 second.
@@ -75,17 +93,6 @@ This simple integration `<cd-timer></cd-timer>` will start the timer with the de
 
 Timer shall be bind with `@ViewChild()` in Angular App.
 
-## Development
-
-### Build
-
-Run `ng build angular-cd-timer` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-### Publishing
-
-After building your library with `ng build angular-cd-timer`, go to the dist folder `cd dist/angular-cd-timer` and run `npm publish`.
-
-
 ## Contribution
 
 We welcome any or all kinds of contributions! 
@@ -95,4 +102,4 @@ Please submit [pull requests](https://github.com/clemdesign/angular-cd-timer/pul
 ## License
 
 Under MIT
-Copyright (c) 2018-2019 clemdesign
+Copyright (c) 2018-2021 clemdesign

@@ -25,18 +25,13 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
   @Input() autoStart: boolean;
   @Input() maxTimeUnit: string;
   @Input() format: string;
-  @Output() onStart: EventEmitter<CdTimerComponent>;
-  @Output() onStop: EventEmitter<CdTimerComponent>;
-  @Output() onTick: EventEmitter<TimeInterface>;
-  @Output() onComplete: EventEmitter<CdTimerComponent>;
+  @Output() onStart: EventEmitter<CdTimerComponent> = new EventEmitter<CdTimerComponent>();
+  @Output() onStop: EventEmitter<CdTimerComponent> = new EventEmitter<CdTimerComponent>();
+  @Output() onTick: EventEmitter<TimeInterface> = new EventEmitter<TimeInterface>();
+  @Output() onComplete: EventEmitter<CdTimerComponent> = new EventEmitter<CdTimerComponent>();
 
   constructor(private elt: ElementRef, private renderer: Renderer2) {
     // Initialization
-    this.onStart    = new EventEmitter();
-    this.onComplete = new EventEmitter();
-    this.onStop     = new EventEmitter();
-    this.onTick     = new EventEmitter();
-
     this.autoStart  = true;
     this.startTime  = 0;
     this.endTime    = 0;
@@ -63,7 +58,7 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
   public start() {
     this.initVar();
     this.resetTimeout();
-    this.calculateTimeUnits();
+    this.computeTimeUnits();
     this.startTickCount();
 
     this.onStart.emit(this);
@@ -94,7 +89,7 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
     this.initVar();
     this.resetTimeout();
     this.clear();
-    this.calculateTimeUnits();
+    this.computeTimeUnits();
     this.renderText();
   }
 
@@ -113,6 +108,10 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
     };
   }
 
+  /**
+   * Initialize variable before start
+   * @private
+   */
   private initVar() {
     this.startTime = this.startTime || 0;
     this.endTime   = this.endTime || 0;
@@ -130,12 +129,20 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  /**
+   * Reset timeout
+   * @private
+   */
   private resetTimeout() {
     if (this.timeoutId) {
       clearInterval(this.timeoutId);
     }
   }
 
+  /**
+   * Render the time to DOM
+   * @private
+   */
   private renderText() {
     let outputText;
     if (this.format === 'user') {
@@ -188,7 +195,11 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
     this.timeoutId = null;
   }
 
-  protected calculateTimeUnits() {
+  /**
+   * Compute each unit (seconds, minutes, hours, days) for further manipulation
+   * @protected
+   */
+  protected computeTimeUnits() {
     if (!this.maxTimeUnit || this.maxTimeUnit === 'day') {
       this.seconds  = Math.floor(this.tickCounter % 60);
       this.minutes  = Math.floor((this.tickCounter / 60) % 60);
@@ -214,6 +225,10 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
     this.renderText();
   }
 
+  /**
+   * Start tick count, base of this component
+   * @protected
+   */
   protected startTickCount () {
     const that = this;
 
@@ -236,7 +251,7 @@ export class CdTimerComponent implements AfterViewInit, OnDestroy {
         }
       }
 
-      that.calculateTimeUnits();
+      that.computeTimeUnits();
 
       const timer: TimeInterface = {
         seconds: that.seconds,
