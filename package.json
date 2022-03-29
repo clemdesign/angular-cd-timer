@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "library": "ng build angular-cd-timer",
-    "publish": "ng build angular-cd-timer && cd dist/angular-cd-timer && npm publish"
+    "publish": "ng build angular-cd-timer --configuration production && cd dist/angular-cd-timer && npm publish"
   },
   "private": true,
   "dependencies": {
