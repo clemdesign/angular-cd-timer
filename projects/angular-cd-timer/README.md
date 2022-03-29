@@ -60,6 +60,7 @@ This simple integration `<cd-timer></cd-timer>` will start the timer with the de
 - `format`: Display timer count in predefined format. Default: 'user' or 'default'.
   - `default`: Display like `0d 0h 0m 0s`.
   - `hms`: Display like `HH:MM:SS`.
+  - `ms`: Display like `MM:SS`.
   - `intelli`: Display in condensed format:
     - only seconds: 25s
     - minutes and seconds: 02min 12s
